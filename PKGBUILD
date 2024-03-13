@@ -16,6 +16,7 @@ license=('custom')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools'
              'python-wheel')
+optdepends=('python-pygments: syntax highlight of code directives and roles')
 source=("https://downloads.sourceforge.net/$_name/$_name-$pkgver.tar.gz")
 b2sums=('73fb8302599ffe57b0840c898b0b2e3ccd39ff9ea6eec2b5d345d02c950e1a8357bd821e62733b0484e82bc30e71d30fab381390b0edaef4375b02bcd9eeeb40')
 
