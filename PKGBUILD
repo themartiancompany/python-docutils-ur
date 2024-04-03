@@ -7,7 +7,7 @@
 pkgname=python-docutils
 _name=${pkgname#python-}
 pkgver=0.20.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Set of tools for processing plaintext docs into formats such as HTML, XML, or LaTeX'
 arch=('any')
