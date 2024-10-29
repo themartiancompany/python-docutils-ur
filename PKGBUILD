@@ -8,57 +8,113 @@
 # Contributor : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
-pkgname=python-docutils
-_name=${pkgname#python-}
+_py="python"
+_pyver="$( \
+  "${_py}" \
+    -V | \
+    awk \
+      '{print $2}')"
+_pymajver="${_pyver%.*}"
+_pyminver="${_pymajver#*.}"
+_pynextver="${_pymajver%.*}.$(( \
+  ${_pyminver} + 1))"
+_pkg=docutils
+pkgname="${_py}-${_pkg}"
 pkgver=0.21.2
 pkgrel=1
 epoch=1
-pkgdesc='Set of tools for processing plaintext docs into formats such as HTML, XML, or LaTeX'
-arch=('any')
-url='http://docutils.sourceforge.net'
-license=('custom')
-depends=('python')
+_pkgdesc=(
+  'Set of tools for processing plaintext'
+  "docs into formats such as HTML, XML, or LaTeX"
+)
+pkgdesc="${_pkgdesc[*]}"
+arch=(
+  'any'
+)
+url="http://${_pkg}.sourceforge.net"
+license=(
+  'custom'
+)
+depends=(
+  "${_py}>=${_pymajver}"
+  "${_py}<${_pynextver}"
+)
 makedepends=(
-  'python-build'
-  'python-flit-core'
-  'python-installer'
+  "${_py}-build"
+  "${_py}-flit-core"
+  "${_py}-installer"
 )
-checkdepends=('python-pillow')
+checkdepends=(
+  "${_py}-pillow"
+)
 optdepends=(
-  'python-myst-parser: to parse input in "Markdown" (CommonMark) format'
-  'python-pillow: for some image manipulation operations'
-  'python-pygments: for syntax highlighting of code directives and roles'
+  "${_py}-myst-parser: to parse input in 'Markdown' (CommonMark) format"
+  "${_py}-pillow: for some image manipulation operations"
+  "${_py}-pygments: for syntax highlighting of code directives and roles"
 )
-source=("https://downloads.sourceforge.net/$_name/$_name-$pkgver.tar.gz")
-b2sums=('727c2f97fc5835a0ffa62e38ea85af366cd89ad1eaec0b8af8b1f3b12e6cddfddb65161ba34f9109952d37ba2cf8985f3c3b6905ebb2ac1c9a984cce3fb4d170')
+_sf="https://downloads.sourceforge.net"
+source=(
+  "${_sf}/${_pkg}/${_pkg}-$pkgver.tar.gz"
+)
+b2sums=(
+  '727c2f97fc5835a0ffa62e38ea85af366cd89ad1eaec0b8af8b1f3b12e6cddfddb65161ba34f9109952d37ba2cf8985f3c3b6905ebb2ac1c9a984cce3fb4d170'
+)
 
 prepare() {
-  cd "$_name"-$pkgver
-  # Remove include list https://github.com/pypa/wheel/issues/92
-  sed -i '/^include =/,/]/d' pyproject.toml
+  cd \
+    "${_pkg}-${pkgver}"
+  # Remove include list
+  # https://github.com/pypa/wheel/issues/92
+  sed \
+    -i \
+    '/^include =/,/]/d' \
+    pyproject.toml
 }
 
 build() {
-  cd "$_name"-$pkgver
-  python -m build --wheel --skip-dependency-check --no-isolation
+  cd \
+    "${_pkg}-${pkgver}"
+  "${_py}" \
+    -m \
+      build \
+    --wheel \
+    --skip-dependency-check \
+    --no-isolation
 }
 
 check() {
-  cd "$_name"-$pkgver
+  cd \
+    "${_pkg}-${pkgver}"
   # we need utf locale to valid utf8 tests
-  export LANG=en_US.UTF-8
-  PYTHONPATH="$PWD/build/python/" python test/alltests.py
+  export \
+    LANG=en_US.UTF-8
+  PYTHONPATH="$PWD/build/python/" \
+  "${_py}" \
+    test/alltests.py
 }
 
 package() {
-  cd "$_name"-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
-
+  local \
+    _site_packages
+  _site_packages=$( \
+    "${_py}" \
+      -c \
+        "import site; print(site.getsitepackages()[0])")
+  cd \
+    "${_pkg}-${pkgver}"
+  "${_py}" \
+    -m \
+      installer \
+      --destdir="${pkgdir}" \
+      dist/*.whl
   # symlink license file
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s "$site_packages"/"$_name"-$pkgver.dist-info/COPYING.txt \
-    "$pkgdir"/usr/share/licenses/$pkgname/COPYING.txt
+  install \
+    -d \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln \
+    -s \
+    "${_site_packages}/${_pkg}-${pkgver}.dist-info/COPYING.txt" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
 }
 
 # vim:set ts=2 sw=2 et:

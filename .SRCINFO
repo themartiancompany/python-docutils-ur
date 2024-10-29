@@ -10,8 +10,9 @@ pkgbase = python-docutils
 	makedepends = python-build
 	makedepends = python-flit-core
 	makedepends = python-installer
-	depends = python
-	optdepends = python-myst-parser: to parse input in "Markdown" (CommonMark) format
+	depends = python>=3.12
+	depends = python<3.13
+	optdepends = python-myst-parser: to parse input in 'Markdown' (CommonMark) format
 	optdepends = python-pillow: for some image manipulation operations
 	optdepends = python-pygments: for syntax highlighting of code directives and roles
 	source = https://downloads.sourceforge.net/docutils/docutils-0.21.2.tar.gz
