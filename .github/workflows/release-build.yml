@@ -1688,9 +1688,9 @@ jobs:
             ${{ github.event.release.upload_url }}
             # ${{ steps.create_release.outputs.upload_url }}
           asset_path:
-            "python-docutils-1:${{ steps.version.outputs.version }}-any.pkg.tar.xz"
+            "python-docutils-1~${{ steps.version.outputs.version }}-any.pkg.tar.xz"
           asset_name:
-            "dogeos-windows-python-docutils-1:${{ steps.version.outputs.version }}-any.pkg.tar.xz"
+            "dogeos-windows-python-docutils-1~${{ steps.version.outputs.version }}-any.pkg.tar.xz"
           asset_content_type:
             application/gzip
 
