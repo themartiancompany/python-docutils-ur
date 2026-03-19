@@ -719,6 +719,12 @@ jobs:
       - name:
           Builds the package.
         run: |
+          export \
+            _pkgbase="$( \
+              /entrypoint.sh \
+                recipe-get \
+                  "PKGBUILD" \
+                  "pkgbase")"
           /entrypoint.sh \
             _evmfs="false" \
             _git="true" \

@@ -107,10 +107,13 @@ _pynextver="${_pymajver%.*}.$((
   ${_pyminver} + 1))"
 _pkg=docutils
 _proj=hip
-pkgname="${_py}-${_pkg}"
+pkgbase="${_py}-${_pkg}"
+pkgname=(
+  "${pkgbase}"
+)
 _commit="ab29cf78ae24a9970d9884de40926dceb855bd32"
 pkgver=0.21.2
-pkgrel=9
+pkgrel=10
 epoch=1
 _pkgdesc=(
   'Set of tools for processing plaintext'
