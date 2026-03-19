@@ -760,7 +760,7 @@ jobs:
           name:
             artifact-${{ matrix.platform }}-${{ matrix.architecture }}
           path:
-            reallymakepkg-${{ steps.version.outputs.version }}-any.pkg.tar.xz
+            python-docutils-${{ steps.version.outputs.version }}-any.pkg.tar.xz
       # - name:
       #     Upload Termux package.
       #   uses:
@@ -1361,7 +1361,7 @@ jobs:
           name:
             artifact-${{ matrix.platform }}-${{ matrix.architecture }}
           path:
-            reallymakepkg-${{ steps.version.outputs.version }}-any.pkg.tar.xz
+            python-docutils-${{ steps.version.outputs.version }}-any.pkg.tar.xz
   msys2:
     name:
       Life and DogeOS Windows base packages (CI).
@@ -1599,7 +1599,7 @@ jobs:
           name:
             artifact-${{ matrix.sys }}-${{ matrix.env }}
           path:
-            reallymakepkg-${{ steps.version.outputs.version }}-any.pkg.tar.xz
+            python-docutils-${{ steps.version.outputs.version }}-any.pkg.tar.xz
   # This is the ideal way termux-docker would work with GHA.
   broken-ideal:
     name:
