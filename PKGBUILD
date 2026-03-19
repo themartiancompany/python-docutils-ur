@@ -174,11 +174,6 @@ _sf="https://downloads.sourceforge.net"
 source=(
   "${_sf}/${_pkg}/${_pkg}-$pkgver.tar.gz"
 )
-
-b2sums=(
-  '727c2f97fc5835a0ffa62e38ea85af366cd89ad1eaec0b8af8b1f3b12e6cddfddb65161ba34f9109952d37ba2cf8985f3c3b6905ebb2ac1c9a984cce3fb4d170'
-)
-
 source=()
 sha256sums=()
 _url="${url}"
@@ -264,6 +259,11 @@ fi
 if [[ -v "_sum" ]]; then
   sha256sums+=(
     "${_sum}"
+  )
+fi
+if [[ "${_git}" == "false" ]]; then
+  b2sums=(
+    "${_release_b2_sum}"
   )
 fi
 validpgpkeys=(
