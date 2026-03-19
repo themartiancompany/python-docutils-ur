@@ -202,6 +202,14 @@ _github_sum='SKIP'
 _github_sig_sum="SKIP"
 _release_b2_sum='727c2f97fc5835a0ffa62e38ea85af366cd89ad1eaec0b8af8b1f3b12e6cddfddb65161ba34f9109952d37ba2cf8985f3c3b6905ebb2ac1c9a984cce3fb4d170'
 if [[ "${_git}" == "false" ]]; then
+  if [[ "${_git_service}" == "gitlab" ]]; then
+    _sum="${_release_sum}"
+    _sig_sum="${_release_sig_sum}"
+  else
+    _sum="${_release_sum}"
+    _sig_sum="${_release_sig_sum}"
+  fi
+elif [[ "${_git}" == "false" ]]; then
   _sum="${_release_sum}"
   _sig_sum="${_release_sig_sum}"
 fi
@@ -252,6 +260,8 @@ if [[ -v "_src" ]]; then
   source+=(
     "${_src}"
   )
+fi
+if [[ -v "_sum" ]]; then
   sha256sums+=(
     "${_sum}"
   )
