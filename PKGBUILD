@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: AGPL-3.0
+#g SPDX-License-Identifier: AGPL-3.0
 
 #    ----------------------------------------------------------------------
 #    Copyright © 2024, 2025, 2026  Pellegrino Prevete
@@ -110,7 +110,7 @@ _proj=hip
 pkgname="${_py}-${_pkg}"
 _commit="ab29cf78ae24a9970d9884de40926dceb855bd32"
 pkgver=0.21.2
-pkgrel=7
+pkgrel=8
 epoch=1
 _pkgdesc=(
   'Set of tools for processing plaintext'
