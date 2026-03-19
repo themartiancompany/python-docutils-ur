@@ -115,7 +115,7 @@ pkgname=(
 )
 _commit="ab29cf78ae24a9970d9884de40926dceb855bd32"
 pkgver=0.21.2
-pkgrel=21
+pkgrel=22
 epoch=1
 _pkgdesc=(
   'Set of tools for processing plaintext'
@@ -328,7 +328,7 @@ package() {
       -c \
         "${_cmd[*]}")
   cd \
-    "${_pkg}-${pkgver}"
+    "${_tarname}"
   "${_py}" \
     -m \
       installer \
