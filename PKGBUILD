@@ -64,6 +64,8 @@ fi
 if [[ ! -v "_git_http" ]]; then
   if [[ "${_git_service}" == "gitlab" ]]; then
     _git_domain="gitlab.com"
+  elif [[ "${_git_service}" == "github" ]]; then
+    _git_domain="github.com"
   elif [[ "${_git_service}" == "svn" ]]; then
     # Repo
     _git_domain="repo.or.cz"
@@ -113,7 +115,7 @@ pkgname=(
 )
 _commit="ab29cf78ae24a9970d9884de40926dceb855bd32"
 pkgver=0.21.2
-pkgrel=10
+pkgrel=11
 epoch=1
 _pkgdesc=(
   'Set of tools for processing plaintext'
