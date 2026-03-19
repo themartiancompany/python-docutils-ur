@@ -693,7 +693,7 @@ jobs:
           /entrypoint.sh \
             TERMUX_VERSION="50" \
             _evmfs="false" \
-            _git_http="github" \
+            _git_service="github" \
             reallymakepkg \
               -v \
               -w \
@@ -1311,7 +1311,7 @@ jobs:
         run: |
           su \
             -c \
-              "cd '$(pwd)' && _evmfs="false" _git_http="github" makepkg -df --nocheck --skippgpcheck" - \
+              "cd '$(pwd)' && _evmfs="false" _git_service="github" makepkg -df --nocheck --skippgpcheck" - \
             "user"
       # - name:
       #     Installs the package.
@@ -1550,7 +1550,7 @@ jobs:
           dos2unix \
             "PKGBUILD"
           _evmfs="false" \
-          _git_http="github" \
+          _git_service="github" \
           makepkg \
             -df \
             --nocheck \
