@@ -1524,7 +1524,7 @@ jobs:
             -rf \
             "${HOME}/fur"
       - name:
-          Installs Crash Bash Library.
+          Installs latest Crash Bash Library.
         run: |
           git \
             clone \
@@ -1666,16 +1666,14 @@ jobs:
             "::set-output name=version::$( \
             export \
               _evmfs="false" && \
-            bash \
-              "reallymakepkg/reallymakepkg/recipe-get" \
-                "PKGBUILD" \
-                "pkgver")-$( \
+            recipe-get \
+              "PKGBUILD" \
+              "pkgver")-$( \
             export \
               _evmfs="false" && \
-            bash \
-              "reallymakepkg/reallymakepkg/recipe-get" \
-                "PKGBUILD" \
-                "pkgrel")"
+            recipe-get \
+              "PKGBUILD" \
+              "pkgrel")"
         id:
           version
       - name:
