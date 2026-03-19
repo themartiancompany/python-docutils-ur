@@ -1624,6 +1624,14 @@ jobs:
             pip \
               install \
               "meson"
+          /entrypoint.sh \
+            pip \
+              install \
+              "build"
+          /entrypoint.sh \
+            pip \
+              install \
+              "installer"
       - uses:
           actions/checkout@v3.3.0
       - name:

@@ -1698,7 +1698,13 @@ jobs:
               "clang" \
           pip \
             install \
-            "meson"
+              "meson"
+          pip \
+            install \
+              "build"
+          pip \
+            install \
+              "installer"
       - uses:
           actions/checkout@v3.3.0
       - name:
