@@ -338,10 +338,12 @@ package() {
   install \
     -d \
     "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln \
-    -s \
-    "${_site_packages}/${_tarname}.dist-info/COPYING.txt" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
+  if [[ "${_git}" == "false" ]]; then
+    ln \
+      -s \
+      "${_site_packages}/${_tarname}.dist-info/COPYING.txt" \
+      "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
+  fi
 }
 
 # vim:set ts=2 sw=2 et:
