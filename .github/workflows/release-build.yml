@@ -726,6 +726,10 @@ jobs:
                   "PKGBUILD" \
                   "pkgbase")"
           /entrypoint.sh \
+            mkdir \
+              -p \
+              "${HOME}/${_pkgbase}-build"
+          /entrypoint.sh \
             _evmfs="false" \
             _git="true" \
             TERMUX_VERSION=50 \
