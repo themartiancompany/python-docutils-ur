@@ -316,7 +316,8 @@ check() {
 package() {
   local \
     _cmd=() \
-    _site_packages
+    _site_packages \
+    _license
   _cmd=(
     "import site;"
     "print("
@@ -334,15 +335,21 @@ package() {
       installer \
       --destdir="${pkgdir}" \
       dist/*.whl
-  # symlink license file
-  install \
-    -d \
-    "${pkgdir}/usr/share/licenses/${pkgname}"
   if [[ "${_git}" == "false" ]]; then
-    ln \
-      -s \
-      "${_site_packages}/${_tarname}.dist-info/COPYING.txt" \
-      "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
+    # symlink license file
+    install \
+      -vdm755 \
+      "${pkgdir}/usr/share/licenses/${pkgname}"
+    _license="${_site_packages}/${_tarname}.dist-info/COPYING.txt"
+    if [[ -e "${_license}" ]]; then
+      ln \
+        -s \
+        "${_license}" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
+    else
+      echo \
+        "mm"
+    fi
   fi
 }
 
