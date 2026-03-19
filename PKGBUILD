@@ -209,7 +209,7 @@ if [[ "${_git}" == "false" ]]; then
     _sum="${_release_sum}"
     _sig_sum="${_release_sig_sum}"
   fi
-elif [[ "${_git}" == "false" ]]; then
+elif [[ "${_git}" == "true" ]]; then
   _sum="${_release_sum}"
   _sig_sum="${_release_sig_sum}"
 fi
