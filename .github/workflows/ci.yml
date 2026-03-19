@@ -647,6 +647,14 @@ jobs:
           #     "meson"
           #
       - name:
+          Installs Docutils.
+        run: |
+          SHELL="bash" \
+          /entrypoint.sh \
+            pip \
+              install \
+                "docutils"
+      - name:
           Installs latest Fur.
         run: |
           /entrypoint.sh \

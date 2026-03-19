@@ -664,6 +664,12 @@ jobs:
               -Sy || \
             true
       - name:
+          Install docutils.
+        run: |
+          pip \
+            install \
+              "docutils"
+      - name:
           Read pkgbase.
         run: |
           export \
