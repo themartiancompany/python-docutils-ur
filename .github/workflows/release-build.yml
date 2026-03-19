@@ -800,9 +800,9 @@ jobs:
             ${{ github.event.release.upload_url }}
             # ${{ steps.create_release.outputs.upload_url }}
           asset_path:
-            python-docutils-${{ steps.version.outputs.version }}-any.pkg.tar.xz
+            "python-docutils-1:${{ steps.version.outputs.version }}-any.pkg.tar.xz"
           asset_name:
-            dogeos-android-python-docutils-${{ steps.version.outputs.version }}-any.pkg.tar.xz
+            "dogeos-android-python-docutils-1:${{ steps.version.outputs.version }}-any.pkg.tar.xz"
           asset_content_type:
             application/gzip
   arch_release:
@@ -1367,9 +1367,9 @@ jobs:
             ${{ github.event.release.upload_url }}
             # ${{ steps.create_release.outputs.upload_url }}
           asset_path:
-            python-docutils-${{ steps.version.outputs.version }}-any.pkg.tar.xz
+            "python-docutils-1:${{ steps.version.outputs.version }}-any.pkg.tar.xz"
           asset_name:
-            dogeos-gnu-python-docutils-${{ steps.version.outputs.version }}-any.pkg.tar.xz
+            "dogeos-gnu-python-docutils-1:${{ steps.version.outputs.version }}-any.pkg.tar.xz"
           asset_content_type:
             application/gzip
   msys2_release:
@@ -1657,9 +1657,9 @@ jobs:
             ${{ github.event.release.upload_url }}
             # ${{ steps.create_release.outputs.upload_url }}
           asset_path:
-            python-docutils-${{ steps.version.outputs.version }}-any.pkg.tar.xz
+            "python-docutils-1:${{ steps.version.outputs.version }}-any.pkg.tar.xz"
           asset_name:
-            dogeos-windows-python-docutils-${{ steps.version.outputs.version }}-any.pkg.tar.xz
+            "dogeos-windows-python-docutils-1:${{ steps.version.outputs.version }}-any.pkg.tar.xz"
           asset_content_type:
             application/gzip
 
