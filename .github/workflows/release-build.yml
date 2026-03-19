@@ -733,7 +733,7 @@ jobs:
             reallymakepkg \
               -v \
               -w \
-                "${HOME}/${_pkgbase}-git-build" \
+                "${HOME}/${_pkgbase}-build" \
               -u \
               -- \
               -df \
@@ -749,17 +749,17 @@ jobs:
       # - name:
       #     Installs the package.
       #   run: |
+      #     export \
+      #       _pkgname="$( \
+      #         /entrypoint.sh \
+      #           recipe-get \
+      #             "PKGBUILD" \
+      #             "pkgname")"
       #     /entrypoint.sh \
       #       pacman \
       #         -Rdd \
       #         --noconfirm \
-      #         fur || \
-      #         true
-      #     /entrypoint.sh \
-      #       pacman \
-      #         -Rdd \
-      #         --noconfirm \
-      #         fur-docs || \
+      #         ${_pkgname} || \
       #         true
       #     /entrypoint.sh \
       #       pacman \
@@ -1322,6 +1322,11 @@ jobs:
       - name:
           Builds the Arch package.
         run: |
+          export \
+            _pkgbase="$(
+              recipe-get \
+                "PKGBUILD" \
+                "pkgbase")"
           su \
             -c \
               "cd $(pwd) && _evmfs="false" _git_http="github" reallymakepkg -v -u -w '/home/user/${_pkgbase}-build' -- -df --nocheck --skippgpcheck" - \
@@ -1583,11 +1588,11 @@ jobs:
         run: |
           dos2unix \
             "PKGBUILD"
-          # _evmfs="false" \
-          # PKGEXT='.pkg.tar.xz' \
-          # makepkg \
-          #   -df \
-          #   --nocheck
+          # export \
+          #   _pkgbase="$( \
+          #     recipe-get \
+          #       "PKGBUILD" \
+          #       "pkgbase")"
           PKGEXT='.pkg.tar.xz' \
           _evmfs="false" \
           _git_http="github" \
@@ -1596,10 +1601,11 @@ jobs:
             --nocheck \
             --skippgpcheck
           # _evmfs="false" \
+          # _git_http="github" \
           # reallymakepkg \
           #   -v \
           #   -w \
-          #     "${HOME}/reallymakepkg-git-build" \
+          #     "${HOME}/${_pkgbase}-build" \
           #   -u \
           #   -- \
           #   -df \
