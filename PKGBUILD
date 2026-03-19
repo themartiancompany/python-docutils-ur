@@ -110,7 +110,7 @@ _proj=hip
 pkgname="${_py}-${_pkg}"
 _commit="ab29cf78ae24a9970d9884de40926dceb855bd32"
 pkgver=0.21.2
-pkgrel=8
+pkgrel=9
 epoch=1
 _pkgdesc=(
   'Set of tools for processing plaintext'
