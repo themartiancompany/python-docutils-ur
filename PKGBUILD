@@ -351,6 +351,7 @@ package() {
         cp \
           "${_license}" \
           "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
+      fi
     else
       echo \
         "mm"
