@@ -159,6 +159,10 @@ jobs:
             pip \
               install \
                 "installer"
+          /entrypoint.sh \
+            pip \
+              install \
+                "flit-core"
       # - name:
       #     Installs Rust.
       #   run: |
