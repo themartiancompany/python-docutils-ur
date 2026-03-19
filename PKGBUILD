@@ -342,10 +342,15 @@ package() {
       "${pkgdir}/usr/share/licenses/${pkgname}"
     _license="${_site_packages}/${_tarname}.dist-info/COPYING.txt"
     if [[ -e "${_license}" ]]; then
-      ln \
-        -s \
-        "${_license}" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
+      if [[ "${_os}" != "Msys" ]]; then
+        ln \
+          -s \
+          "${_license}" \
+          "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
+      elif [[ "${_os}" == "Msys" ]]; then
+        cp \
+          "${_license}" \
+          "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
     else
       echo \
         "mm"
