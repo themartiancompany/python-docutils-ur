@@ -63,12 +63,12 @@ if [[ ! -v "_git_service" ]]; then
 fi
 if [[ ! -v "_git_http" ]]; then
   if [[ "${_git_service}" == "gitlab" ]]; then
-    _git_domain="gitlab.com"
+    _git_http="gitlab.com"
   elif [[ "${_git_service}" == "github" ]]; then
-    _git_domain="github.com"
+    _git_http="github.com"
   elif [[ "${_git_service}" == "svn" ]]; then
     # Repo
-    _git_domain="repo.or.cz"
+    _git_http="repo.or.cz"
   fi
 fi
 if [[ ! -v "_source" ]]; then
@@ -115,7 +115,7 @@ pkgname=(
 )
 _commit="ab29cf78ae24a9970d9884de40926dceb855bd32"
 pkgver=0.21.2
-pkgrel=11
+pkgrel=13
 epoch=1
 _pkgdesc=(
   'Set of tools for processing plaintext'
@@ -133,7 +133,7 @@ if [[ ! -v "_ns" ]]; then
   fi
 fi
 url="http://${_pkg}.sourceforge.net"
-_url="https://${_git_domain}/${_ns}/${_pkg}"
+_url="https://${_git_http}/${_ns}/${_pkg}"
 if [[ "${_git_service}" == "gitlab" || \
       "${_git_service}" == "github" ]]; then
   url="${_url}"
